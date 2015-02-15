@@ -12,8 +12,8 @@ fi
 
 # Re-fetch gtest.  I read in:
 #   http://stackoverflow.com/questions/8507723/how-to-start-working-with-gtest-and-cmake
-# that it is much easier to do use gtest from cmake by having the gtest source
-# directory right in the project directory.
+# that it is much easier to do use gtest from cmake by having the gtest source dir
+# right in the project directory.
 tar xzf gtest-1.7.0.tz
 
 # Set up cmake to use clang and gtest.  A fair amount of googling went into this line.  :-)
