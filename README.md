@@ -67,3 +67,8 @@ You can combine `make` and `./runUnitTests` with:
 ```
 ./tst.sh
 ```
+
+
+# TODO
+
+One significant problem is that if a number of files are changed, autotest will loop that many times.  It will be better if, when the first file change is detected, it waits a half second and reads the rest of the files from fswatch.  But I can't think of an easy way to do that without a C program doing non-blocking reads, which sounds too much like work.  Oh well, I'll get motivated to figure it out when I start being inconvenienced by the problem.  :-)
