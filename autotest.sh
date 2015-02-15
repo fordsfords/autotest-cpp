@@ -1,9 +1,9 @@
 #!/bin/sh
 # autotest.sh - for C/C++ programs built with "make" and tested with "tst.sh"
 
-if which fswatch >/dev/null 2>&1; then :;
+if which fswatch >/dev/null; then :;
 else :
-    echo "autotest.sh: fswatch not installed; suggest using homebrew 'brew install fswatch'" 2>&1
+    echo "autotest.sh: fswatch not installed; see README.md" >&2
     exit 1
 fi
 if [ ! -f Makefile ]; then :

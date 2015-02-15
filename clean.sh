@@ -1,4 +1,4 @@
 #!/bin/sh
 # clean.sh
 
-rm -rf *.log gtest-1.7.0 CMake* *.cmake runUnitTests Makefile
+rm -rf gtest-1.7.0 CMakeFiles CMakeCache.txt *.cmake runUnitTests Makefile

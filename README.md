@@ -8,7 +8,7 @@ This is my first attempt to create a C++ development environment.  I use a Mac, 
 
 ## Dependencies
 
-Requires `fswatch` which I got on my Mac using homebrew ("`brew install fswatch`").
+Requires `fswatch` which I got on my Mac using [homebrew](http://brew.sh/) ("`brew install fswatch`").
 
 Requires `cmake` which I got on my Mac by [downloading](http://www.cmake.org/download/#latest) the `.dmg` file and doing the standard install.  When I did it, the syn links didn't install in /usr/bin, so I did:
 ```
@@ -24,9 +24,10 @@ Requires gtest, which is included in this sample project.  Why?  Because I could
 The main files in this sample are:
 * `learn.cpp` - the unit tests (in gtest form).
 * `clean.sh` - script to remove all generated files.
-* `rebuild.sh` - script to generate the cmake `CMakeLists.txt` file, re-configure, re-generate the Makefile, re-build gtest, and re-build `learn.cpp`.
+* `rebuild.sh` - script to run cmake to re-configure and re-generate the Makefile, re-build gtest, and re-build `learn.cpp`.
 * `tst.sh` - script to run `make` followed by the unit tests executable.
 * `autotest.sh` - script to monitor for updated source files and run `tst.sh`.
+* `CMakeLists.txt`` - master file for cmake.
 * `gtest-1.7.0.tz` - compressed tar snapshot of gtest.
 
 
@@ -36,25 +37,30 @@ After downloading, get started with:
 ```
 ./rebuild.sh
 ```
+You'll need to re-run `rebuild.sh` when you make changes to your project that require re-generating the `Makefile`.  For exmaple, adding or removing a file, or making other changes to `CMakeLists.txt`.
 
-You can manually do a "minor" rebuild with:
+
+Now you can run the automated tester in one window with:
+```
+./autotest.sh
+```
+while you edit source files in another window.  Each time you save a source file, the autotest window should wake up, do a "make", and if successful, will do a `./tst.sh`.
+
+
+Subsequent to that, you can manually do a "minor" rebuild with:
 ```
 make
 ```
-By minor, I mean after you've made changes which do not require re-generating the `Makefile`.  HOWEVER, if you add/remove files, or otherwise need to change the cmake list file, you'll have to run `rebuild.sh`.
+By minor, I mean after you've made changes which do not require re-generating the `Makefile`.  HOWEVER, if you add/remove files, or otherwise need to change the cmake list file, you'll have to run `rebuild.sh` again.
+
 
 You can manually run the unit tests with:
 ```
 ./runUnitTests
 ```
 
+
 You can combine `make` and `./runUnitTests` with:
 ```
 ./tst.sh
 ```
-
-Finally, you can run the automated tester in one window with:
-```
-./autotest.sh
-```
-while you edit source files in another window.  Each time you save a source file, the autotest window should wake up, do a "make", and if successful, will do a `./tst.sh`.
